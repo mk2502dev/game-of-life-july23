@@ -10,8 +10,7 @@ pipeline{
     stages{
         stage('Checkout code'){
             steps{
-                git poll: true,
-                    url: 'https://github.com/mk2502dev/game-of-life-july23.git',
+                git url: 'https://github.com/mk2502dev/game-of-life-july23.git',
                     branch: 'develop'
             }
         }
