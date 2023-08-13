@@ -2,6 +2,7 @@ pipeline{
     agent { label 'GameOfLife-node2' }
     tools{
         jdk 'JDK_8'
+        maven 'MAVEN_3.6.3'
     }
     stages{
         stage('Checkout code'){
