@@ -5,22 +5,22 @@ pipeline{
     }
     stages{
         stage('Checkout code'){
-            step{
+            steps{
                 git url: 'https://github.com/mk2502dev/game-of-life-july23.git'
             }
         }
         stage('Building')
-            step{
+            steps{
                 sh script: 'mvn clean package'
             }
     }
     stage('Archive the artifacts'){
-            step{
+            steps{
                 archiveArtifacts artifacts: '**/gameoflife.war'
             }
     }
     stage('JUnit Report'){
-            step{
+            steps{
                 junit testResults: '**/surefire-reports/TEST-*.xml'
             }
     }
