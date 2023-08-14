@@ -30,5 +30,17 @@ pipeline{
             }
         }
     }
+    post{
+        success{
+            mail subject: 'Project build successfully!!',
+                 body: 'Congratulations your project build successfully without any error',
+                 to: 'mbrdi@mercedes-benz.com'
+        }
+        failure{
+            mail subject: 'Build Fails!!',
+                 body: 'Sorry your project build failed please see the logs',
+                 to: 'mbrdi@mercedes-benz.com'
+        }
+    }
      
 }
