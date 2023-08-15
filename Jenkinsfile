@@ -32,13 +32,13 @@ pipeline{
     }
     post{
         success{
-            mail subject: 'Project build successfully!!',
-                 body: 'Congratulations your project build successfully without any error',
+            mail subject: "${JOB_NAME}:: Build successfully!!",
+                 body: "Congratulations your project build successfully without any error ${BUILD_URL}",
                  to: 'mbrdi@mercedes-benz.com'
         }
         failure{
-            mail subject: 'Build Fails!!',
-                 body: 'Sorry your project build failed please see the logs',
+            mail subject: "${JOB_NAME}:: Build Fails!!",
+                 body: "Sorry your project build failed please see the logs ${JOB_URL}${BUILD_NUMBER}/console",
                  to: 'mbrdi@mercedes-benz.com'
         }
     }
