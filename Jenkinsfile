@@ -7,6 +7,9 @@ pipeline{
     triggers {
         pollSCM('* * * * *')
     }
+    parameters{
+        choice(name: 'GOAL', choices: ['clean package', 'package', 'clean install', 'clean package install'], description: 'This is maven goal')
+    }
     stages{
         stage('Checkout code'){
             steps{
@@ -16,7 +19,7 @@ pipeline{
         }
         stage('Building'){
             steps{
-                sh script: 'mvn clean package'
+                sh script: "mvn ${params.GOAL}"
             }
         }
         stage('Archive the artifacts'){
